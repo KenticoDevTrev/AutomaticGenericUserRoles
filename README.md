@@ -2,7 +2,8 @@
 Adds Automatic `Everyone`, `Authenticated`, and `Not Authenticated` Roles back to Kentico (removed in K12) and automatically handles assigning users to these roles.
 
 # Installation
-1. Install the `HBS.AutomaticGeneratedUserRoles` NuGet Package to your MVC Site AND to your Kentico EMS Site (must be in both)
+1. Install the `HBS.AutomaticGeneratedUserRoles.Kentico` NuGet Package to your MVC Site
+1. Install the `HBS.AutomaticGeneratedUserRoles.Kentico` NuGet Package to your Kentico EMS Site
 
 # Usage
 This tool works automatically.  
