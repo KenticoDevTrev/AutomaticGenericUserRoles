@@ -126,7 +126,7 @@ public class AutomaticGeneratedUserRolesInitializationModule : Module
             // Public user
             UserInfoProvider.GetUsers()
                 .WhereEquals("username", "public")
-                .WhereIn("UserID", UserSiteInfoProvider.GetUserSites().WhereEquals("SiteID", Site.SiteID))
+                .WhereIn("UserID", UserSiteInfoProvider.GetUserSites().WhereEquals("SiteID", Site.SiteID).TypedResult.Select(x => x.UserID).ToArray())
                 .WhereNotIn("UserID", UserRoleInfoProvider.GetUserRoles().WhereEquals("RoleID", SiteAuthenticatedUserRole.RoleID)
                 .TypedResult.Select(x => x.UserID).ToArray()).ForEachObject(x =>
                 {
@@ -136,7 +136,7 @@ public class AutomaticGeneratedUserRolesInitializationModule : Module
             // Non public users
             UserInfoProvider.GetUsers()
                 .WhereNotEquals("username", "public")
-                .WhereIn("UserID", UserSiteInfoProvider.GetUserSites().WhereEquals("SiteID", Site.SiteID))
+                .WhereIn("UserID", UserSiteInfoProvider.GetUserSites().WhereEquals("SiteID", Site.SiteID).TypedResult.Select(x => x.UserID).ToArray())
                 .WhereNotIn("UserID", UserRoleInfoProvider.GetUserRoles().WhereEquals("RoleID", SiteNotAuthenticatedUserRole.RoleID).TypedResult.Select(x => x.UserID).ToArray()).ForEachObject(x =>
                 {
                     HandleUserRole(x.UserID, SiteNotAuthenticatedUserRole.RoleID);
@@ -144,7 +144,7 @@ public class AutomaticGeneratedUserRolesInitializationModule : Module
 
             // Now everyone
             UserInfoProvider.GetUsers()
-                .WhereIn("UserID", UserSiteInfoProvider.GetUserSites().WhereEquals("SiteID", Site.SiteID))
+                .WhereIn("UserID", UserSiteInfoProvider.GetUserSites().WhereEquals("SiteID", Site.SiteID).TypedResult.Select(x => x.UserID).ToArray())
                 .WhereNotIn("UserID", UserRoleInfoProvider.GetUserRoles().WhereEquals("RoleID", SiteEveryoneUserRole.RoleID).TypedResult.Select(x => x.UserID).ToArray()).ForEachObject(x =>
                 {
                     HandleUserRole(x.UserID, SiteEveryoneUserRole.RoleID);
