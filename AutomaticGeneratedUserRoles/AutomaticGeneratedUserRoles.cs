@@ -97,17 +97,17 @@ public class AutomaticGeneratedUserRolesInitializationModule : Module
             .WhereEquals("username", "public")
             .WhereNotIn("UserID", UserRoleInfoProvider.GetUserRoles().WhereEquals("RoleID", NotAuthenticatedUserRole.RoleID)
             .TypedResult.Select(x => x.UserID).ToArray()).ForEachObject(x =>
-        {
-            HandleUserRole(x.UserID, NotAuthenticatedUserRole.RoleID);
-        });
+            {
+                HandleUserRole(x.UserID, NotAuthenticatedUserRole.RoleID);
+            });
 
         // Non public users
         UserInfoProvider.GetUsers()
             .WhereNotEquals("username", "public")
             .WhereNotIn("UserID", UserRoleInfoProvider.GetUserRoles().WhereEquals("RoleID", AuthenticatedUserRole.RoleID).TypedResult.Select(x => x.UserID).ToArray()).ForEachObject(x =>
-        {
-            HandleUserRole(x.UserID, AuthenticatedUserRole.RoleID);
-        });
+            {
+                HandleUserRole(x.UserID, AuthenticatedUserRole.RoleID);
+            });
 
         // Now everyone
         UserInfoProvider.GetUsers()
@@ -117,7 +117,7 @@ public class AutomaticGeneratedUserRolesInitializationModule : Module
             });
 
         // Now go through Site Users
-        foreach(SiteInfo Site in SiteInfoProvider.GetSites())
+        foreach (SiteInfo Site in SiteInfoProvider.GetSites())
         {
             RoleInfo SiteAuthenticatedUserRole = GetOrCreateRole(_AuthenticatedRole, _AuthenticatedRoleDisplayName, _AuthenticatedRoleDescription, Site.SiteID);
             RoleInfo SiteNotAuthenticatedUserRole = GetOrCreateRole(_NotAuthenticatedRole, _NotAuthenticatedRoleDisplayName, _NotAuthenticatedRoleDescription, Site.SiteID);
@@ -180,7 +180,8 @@ public class AutomaticGeneratedUserRolesInitializationModule : Module
                 RoleInfoProvider.SetRoleInfo(Role);
             }
             return Role;
-        } else
+        }
+        else
         {
             // Get Global Role
             RoleInfo Role = RoleInfoProvider.GetRoles().WhereEquals("RoleName", RoleCodeName).WhereNull("SiteID").FirstOrDefault();
@@ -198,7 +199,7 @@ public class AutomaticGeneratedUserRolesInitializationModule : Module
             }
             return Role;
         }
-        
+
     }
 
     /// <summary>
