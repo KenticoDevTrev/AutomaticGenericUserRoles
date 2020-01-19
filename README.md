@@ -3,7 +3,7 @@ Adds Automatic `Everyone`, `Authenticated`, and `Not Authenticated` Roles back t
 
 # Installation
 1. Install the `HBS.AutomaticGeneratedUserRoles.Kentico` NuGet Package to your MVC Site
-1. Install the `HBS.AutomaticGeneratedUserRoles.Kentico` NuGet Package to your Kentico EMS Site
+1. Install the `HBS.AutomaticGeneratedUserRoles.Kentico.Mother` NuGet Package to your Kentico EMS Site
 
 # Usage
 This tool works automatically.  
