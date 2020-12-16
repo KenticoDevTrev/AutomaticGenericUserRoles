@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>13.0.0.0</AssemblyVersion>
+    <FileVersion>13.0.0.0</FileVersion>
+    <Version>13.0.0</Version>
+    <Authors>Trevor Fayas</Authors>
+    <Company>Heartland Business Systems</Company>
+    <Product>Automatic Generated User Roles</Product>
+    <Description>Restores Kentico Generic Roles of _authenticated_ _notauthenticated_ and _everyone_ with code to automatically create and maintain these listings.  This should be installed on both the Admin (Mother) and Site (MVC)</Description>
+    <Copyright>Heartland Business Systems</Copyright>
+    <PackageProjectUrl>https://github.com/KenticoDevTrev/AutomaticGenericUserRoles</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KenticoDevTrev/AutomaticGenericUserRoles</RepositoryUrl>
+    <PackageIcon>hbs-favicon-96x96.png</PackageIcon>
+    <PackageTags>Kentico MVC Roles</PackageTags>
+    <PackageReleaseNotes>Build for Kentico 13</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Kentico.Xperience.Libraries" Version="13.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\hbs-favicon-96x96.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
